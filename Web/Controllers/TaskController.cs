@@ -35,7 +35,6 @@ namespace Web.Controllers
             return output;
         }
 
-        // We should probably return something for these to know whether or not the request was successful.
         [HttpPost]
         public async Task<ActionResult<Tasks>> UpdateTask([FromBody]string taskData)
         {

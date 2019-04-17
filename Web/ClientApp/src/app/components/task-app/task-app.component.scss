@@ -1,0 +1,46 @@
+$title-background: #55AA55;
+$button-background: #0D4D4D;
+$button-border: #AAAAAA;
+$create-button-hover: #7E5295;
+
+.title-bar {
+  display: block;
+  background: $title-background;
+  padding-left: 1%;
+  padding-right: 5%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  cursor: default;
+
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3E2A00;
+  }
+
+  .signature {
+    font-size: 12px;
+    color: gray;
+  }
+
+  .create-new-button {
+    transition: background-color 0.3s;
+    float: right;
+    height: 24px;
+    background-color: $button-background;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 24px;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid $button-border;
+
+    &:hover {
+      background: $create-button-hover;
+      cursor: pointer;
+    }
+  }
+}
