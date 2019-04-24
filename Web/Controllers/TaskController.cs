@@ -22,7 +22,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult<string> GetTasks()
         {
-            var result = _context.GetAllTasks();
+            var result = _context.GetDeleteAllTasks();
             var output = JsonConvert.SerializeObject(result.Result);
             return output;
         }
@@ -35,7 +35,7 @@ namespace Web.Controllers
             return output;
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult<Tasks>> UpdateTask([FromBody]string taskData)
         {
             Stream req = Request.Body;
@@ -55,14 +55,25 @@ namespace Web.Controllers
             return await _context.CreateTask(request);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Tasks>> DeleteTask([FromBody]string taskId)
+        [HttpDelete]
+        public async Task<ActionResult<Tasks>> DeleteTask([FromBody]string taskData)
         {
             Stream req = Request.Body;
             req.Seek(0, System.IO.SeekOrigin.Begin);
-            var request = int.Parse(
+            var request = JsonConvert.DeserializeObject<Tasks>(
                 new StreamReader(req).ReadToEnd());
-            return await _context.DeleteTask(request);
+            return await _context.DeleteTask(request.TaskId);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<string>> DeleteMatchingTasks([FromBody] string taskData)
+        {
+            Stream req = Request.Body;
+            req.Seek(0, System.IO.SeekOrigin.Begin);
+            var request = JsonConvert.DeserializeObject<IList<Tasks>>(
+                new StreamReader(req).ReadToEnd()).ToList<Tasks>();
+            var output = await _context.DeleteMatchingTasks(request);
+            return JsonConvert.SerializeObject(output);
         }
     }
 }

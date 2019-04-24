@@ -55,7 +55,7 @@ namespace Entities
             });
         }
 
-        public async Task<IEnumerable<Tasks>> GetAllTasks()
+        public async Task<IEnumerable<Tasks>> GetDeleteAllTasks()
         {
             using (var context = new TrackrContext())
             {
@@ -146,6 +146,30 @@ namespace Entities
                         await context.SaveChangesAsync();
                     }
                     return result;
+                } catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+        }
+
+        public async Task<IEnumerable<Tasks>> DeleteMatchingTasks(List<Tasks> tasksToDelete)
+        {
+            using (var context = new TrackrContext())
+            {
+                try
+                {
+                    var result = (from a in this.Tasks
+                                  join b in tasksToDelete on a.TaskId equals b.TaskId
+                                  select a);
+                    var resultList = await result.ToListAsync<Tasks>();
+                    if (result != null)
+                    {
+                        context.Tasks.RemoveRange(result);
+                        await context.SaveChangesAsync();
+                    }
+                    return resultList;
                 } catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
