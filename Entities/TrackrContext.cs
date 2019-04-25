@@ -55,7 +55,7 @@ namespace Entities
             });
         }
 
-        public async Task<IEnumerable<Tasks>> GetDeleteAllTasks()
+        public async Task<IEnumerable<Tasks>> GetAllTasks()
         {
             using (var context = new TrackrContext())
             {

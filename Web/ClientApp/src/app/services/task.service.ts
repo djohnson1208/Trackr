@@ -68,4 +68,14 @@ export class TaskService {
       return null;
     }
   }
+
+  public async deleteCollectionOfTasks(tasks: Tasks[]) {
+    try {
+      let response = await this._client.post<Tasks[]>(`${this.apiString}DeleteMatchingTasks`, tasks, this.httpOptions).toPromise();
+      return response as Tasks[];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }

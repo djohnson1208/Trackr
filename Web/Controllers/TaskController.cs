@@ -22,7 +22,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult<string> GetTasks()
         {
-            var result = _context.GetDeleteAllTasks();
+            var result = _context.GetAllTasks();
             var output = JsonConvert.SerializeObject(result.Result);
             return output;
         }

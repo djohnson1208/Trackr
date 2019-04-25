@@ -50,6 +50,16 @@ export class TaskAppComponent implements OnInit {
     this.readTasksFromServer();
   }
 
+  public async deleteCompletedTasks() {
+    let temp = this.tasks.filter((val) => { return val.TaskComplete});
+    console.log(temp);
+    let result = await this.taskService.deleteCollectionOfTasks(temp);
+    if (result == null) {
+      alert("There was an error when deleting the task. Please try again later.");
+    }
+    this.readTasksFromServer();
+  }
+
   public async updateTaskStatus(task: Tasks) {
     console.log(task);
     
