@@ -13,11 +13,12 @@ export class TaskAppComponent implements OnInit {
 
   public tasks: Tasks[];
   public unfilteredTasks: Tasks[];
+  public currentActiveTasks: number;
 
   constructor(private taskService: TaskService) { }
 
   async ngOnInit() {
-    this.readTasksFromServer();
+    await this.readTasksFromServer();
   }
 
   public async createTask() {
@@ -40,7 +41,7 @@ export class TaskAppComponent implements OnInit {
     if (result == null) {
       alert("There was an error when creating the new task. Please try again later.");
     }
-    this.readTasksFromServer();
+    await this.readTasksFromServer();
   }
 
   public async deleteTask(task: Tasks) {
@@ -48,7 +49,7 @@ export class TaskAppComponent implements OnInit {
     if (result == null) {
       alert("There was an error when deleting the task. Please try again later.");
     }
-    this.readTasksFromServer();
+    await this.readTasksFromServer();
   }
 
   public async deleteCompletedTasks() {
@@ -58,7 +59,7 @@ export class TaskAppComponent implements OnInit {
     if (result == null) {
       alert("There was an error when deleting the task. Please try again later.");
     }
-    this.readTasksFromServer();
+    await this.readTasksFromServer();
   }
 
   public async updateTaskStatus(task: Tasks) {
@@ -68,12 +69,13 @@ export class TaskAppComponent implements OnInit {
     if (result == null) {
       alert("There was an error when updating the task. Please try again later.");
     }
-    this.readTasksFromServer();
+    await this.readTasksFromServer();
   }
 
   public async readTasksFromServer() {
     this.tasks = await this.taskService.getAllTasks();
     this.tasks.sort();
+    this.currentActiveTasks = (this.tasks.filter((n) => { return !n.TaskComplete })).length;
   }
 
   public selectViewType(event: any) {
