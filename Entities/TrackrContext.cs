@@ -4,14 +4,13 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace Entities
 {
     public partial class TrackrContext : DbContext, ITrackrContext
     {
-        public TrackrContext()
-        {
-        }
+        public TrackrContext() { }
 
         public TrackrContext(DbContextOptions<TrackrContext> options)
             : base(options)
@@ -22,10 +21,11 @@ namespace Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Trackr;Integrated Security=True");
+                //optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Trackr;Integrated Security=True");
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("TrackrDatabase"));
             }
         }
 
