@@ -11,6 +11,11 @@
   <div class="create-new-button" (click)="createTask()">
     New Task
   </div>
+  <select (change)="selectViewType($event)" class="display-options">
+    <option value="All">All</option>
+    <option value="Active">Active</option>
+    <option value="Complete">Complete</option>
+  </select>
 </div>
 <div *ngFor="let x of tasks">
   <app-task [task]="x" (deleteTask)="deleteTask($event)" (taskUpdated)="updateTaskStatus($event)"></app-task>

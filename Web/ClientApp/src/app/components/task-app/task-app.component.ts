@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class TaskAppComponent implements OnInit {
 
   public tasks: Tasks[];
+  public unfilteredTasks: Tasks[];
 
   constructor(private taskService: TaskService) { }
 
@@ -31,10 +32,10 @@ export class TaskAppComponent implements OnInit {
       return;
     }
     description = prompt("Please enter a task description, if any");
-    task.taskId = id;
-    task.taskName = name;
-    task.taskDescription = description;
-    task.taskComplete = false;
+    task.TaskId = id;
+    task.TaskName = name;
+    task.TaskDescription = description;
+    task.TaskComplete = false;
     const result = await this.taskService.createTask(task);
     if (result == null) {
       alert("There was an error when creating the new task. Please try again later.");
@@ -73,5 +74,24 @@ export class TaskAppComponent implements OnInit {
   public async readTasksFromServer() {
     this.tasks = await this.taskService.getAllTasks();
     this.tasks.sort();
+  }
+
+  public selectViewType(event: any) {
+    if (this.unfilteredTasks == null) {
+      this.unfilteredTasks = this.tasks.slice(0);
+    }
+    console.log(event.target.value);
+    switch (event.target.value) {
+      case 'Active':
+        this.tasks = this.unfilteredTasks.filter((val) => { return !val.TaskComplete });
+        break;
+      case 'Complete':
+        this.tasks = this.unfilteredTasks.filter((val) => { return val.TaskComplete });
+        break;
+      case 'All':
+        this.tasks = this.unfilteredTasks;
+        this.unfilteredTasks = null;
+        break;
+    }
   }
 }
