@@ -24,11 +24,13 @@ export class TaskComponent implements OnInit {
 
   }
 
-  /*public statusChanged() {
-    this.taskUpdated.emit(this.task);
+  public statusChanged() {
+    let temp = this._task;
+    temp.TaskComplete = !temp.TaskComplete;
+    this.taskUpdated.emit(temp);
   }
 
   public deletedTask() {
-    this.deleteTask.emit(this.task);
-  }*/
+    this.deleteTask.emit(this._task);
+  }
 }

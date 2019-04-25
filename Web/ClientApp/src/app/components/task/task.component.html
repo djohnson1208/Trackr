@@ -1,8 +1,9 @@
 <div class="task">
   <div class="task-header">
     <div class="button-area">
-      <i class="fas fa-trash-alt" (click)="test()"></i>
-      <i class="fas fa-edit"></i>
+      <i class="fas fa-trash-alt" (click)="deletedTask()"></i>
+      <i class="fas fa-check" *ngIf="!_task.TaskComplete" (click)="statusChanged()"></i>
+      <i class="far fa-times-circle" *ngIf="_task.TaskComplete" (click)="statusChanged()"></i>
     </div>
     <div class="title">{{_task.TaskName}}</div>
   </div>

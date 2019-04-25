@@ -20,29 +20,52 @@ export class TaskService {
   constructor(private _client: HttpClient) { }
 
   public async getAllTasks() {
-    //return this._client.get(`${this.apiString}GetTasks`).toPromise().then(response => response as Tasks);
     try {
-      let response = await this._client.get(`${this.apiString}GetTasks`)
-        .toPromise();
+      let response = await this._client.get(`${this.apiString}GetTasks`).toPromise();
       return response as Tasks[];
     } catch (error) {
       console.log(error);
+      return null;
     }
   }
 
-  public getTaskById(id: number) {
-    return this._client.get(`${this.apiString}GetTask/${id}`).toPromise();
+  public async getTaskById(id: number) {
+    try {
+      let response = await this._client.get(`${this.apiString}GetTask/${id}`).toPromise();
+      return response as Tasks;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 
-  public updateTask(task: Tasks) {
-    return this._client.post<Tasks>(`${this.apiString}UpdateTask`, task, this.httpOptions).toPromise();
+  public async updateTask(task: Tasks) {
+    try {
+      let response = await this._client.post<Tasks>(`${this.apiString}UpdateTask`, task, this.httpOptions).toPromise();
+      return response as Tasks;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 
-  public createTask(task: Tasks) {
-    return this._client.post<Tasks>(`${this.apiString}CreateTask`, task, this.httpOptions).toPromise();
+  public async createTask(task: Tasks) {
+    try {
+      let response = await this._client.post<Tasks>(`${this.apiString}CreateTask`, task, this.httpOptions).toPromise();
+      return response as Tasks;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 
-  public deleteTask(id: number) {
-    return this._client.post<number>(`${this.apiString}DeleteTask`, id, this.httpOptions).toPromise();
+  public async deleteTask(task: Tasks) {
+    try {
+      let response = await this._client.post<Tasks>(`${this.apiString}DeleteTask`, task, this.httpOptions).toPromise();
+      return response as Tasks;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 }

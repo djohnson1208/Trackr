@@ -35,7 +35,7 @@ namespace Web.Controllers
             return output;
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult<Tasks>> UpdateTask([FromBody]string taskData)
         {
             Stream req = Request.Body;
@@ -55,7 +55,7 @@ namespace Web.Controllers
             return await _context.CreateTask(request);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<ActionResult<Tasks>> DeleteTask([FromBody]string taskData)
         {
             Stream req = Request.Body;
@@ -65,7 +65,7 @@ namespace Web.Controllers
             return await _context.DeleteTask(request.TaskId);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<ActionResult<string>> DeleteMatchingTasks([FromBody] string taskData)
         {
             Stream req = Request.Body;

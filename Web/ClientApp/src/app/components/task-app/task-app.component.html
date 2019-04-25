@@ -8,10 +8,10 @@
   <div class="delete-all-button">
     Delete Completed
   </div>
-  <div class="create-new-button">
+  <div class="create-new-button" (click)="createTask()">
     New Task
   </div>
 </div>
 <div *ngFor="let x of tasks">
-  <app-task [task]="x"></app-task>
+  <app-task [task]="x" (deleteTask)="deleteTask($event)" (taskUpdated)="updateTaskStatus($event)"></app-task>
 </div>

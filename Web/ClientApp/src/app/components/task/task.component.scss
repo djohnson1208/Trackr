@@ -27,12 +27,12 @@ $task-body: #8ab1b5;
     float: right;
     font-size: 24px;
 
-    .fas {
+    .fas, .far {
       margin-left:4px;
       margin-right:4px;
     }
 
-    .fas:hover {
+    .fas:hover, .far:hover {
       transition: color 0.2s;
       color: white;
     }
