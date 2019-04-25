@@ -1,0 +1,45 @@
+$task-background: #669999;
+$task-body: #8ab1b5;
+
+.task {
+  background: $task-body;
+  margin-left: 8%;
+  margin-right: 8%;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.task-header {
+  font-family: 'Roboto', sans-serif;
+  background: $task-background;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: block;
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .button-area {
+    float: right;
+    font-size: 24px;
+
+    .fas {
+      margin-left:4px;
+      margin-right:4px;
+    }
+
+    .fas:hover {
+      transition: color 0.2s;
+      color: white;
+    }
+  }
+}
+
+.description {
+  padding-left: 8px;
+  padding-right: 8px;
+}

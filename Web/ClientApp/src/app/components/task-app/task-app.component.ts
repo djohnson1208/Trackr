@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tasks } from '../../models/tasks';
 import { TaskService } from '../../services/task.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-app',
@@ -9,17 +11,11 @@ import { TaskService } from '../../services/task.service';
 })
 export class TaskAppComponent implements OnInit {
 
-  public tasks: any;
+  public tasks: Tasks[];
 
   constructor(private taskService: TaskService) { }
 
-  ngOnInit() {
-    this.taskService.getAllTasks().then((response) => {
-      this.tasks = response as Tasks;
-    },
-      (err) => {
-        console.log(err);
-      });
+  async ngOnInit() {
+    this.tasks = await this.taskService.getAllTasks();
   }
-
 }

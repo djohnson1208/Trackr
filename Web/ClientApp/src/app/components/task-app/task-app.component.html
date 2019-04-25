@@ -5,8 +5,13 @@
   <span class="signature">
     By Dallas Johnson
   </span>
+  <div class="delete-all-button">
+    Delete Completed
+  </div>
   <div class="create-new-button">
     New Task
   </div>
 </div>
-<app-task *ngFor="let x of tasks" [task]="x"></app-task>
+<div *ngFor="let x of tasks">
+  <app-task [task]="x"></app-task>
+</div>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tasks } from '../models/tasks';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,15 @@ export class TaskService {
 
   constructor(private _client: HttpClient) { }
 
-  public getAllTasks() {
-    return this._client.get(`${this.apiString}GetTasks`).toPromise();
+  public async getAllTasks() {
+    //return this._client.get(`${this.apiString}GetTasks`).toPromise().then(response => response as Tasks);
+    try {
+      let response = await this._client.get(`${this.apiString}GetTasks`)
+        .toPromise();
+      return response as Tasks[];
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   public getTaskById(id: number) {
