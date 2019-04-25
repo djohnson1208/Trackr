@@ -1,0 +1,9 @@
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\bin\Release\TrackrDatabase.dacpac
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\bin\Release\TrackrDatabase.dll
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\bin\Release\TrackrDatabase.pdb
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\Model.xml
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\refactor.xml
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\postdeploy.sql
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\predeploy.sql
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\TrackrDatabase.dll
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\TrackrDatabase\obj\Release\TrackrDatabase.pdb

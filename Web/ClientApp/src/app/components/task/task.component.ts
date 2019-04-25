@@ -16,7 +16,7 @@ export class TaskComponent implements OnInit {
   @Output() taskUpdated = new EventEmitter();
   @Output() deleteTask = new EventEmitter();
 
-  private _task: any;
+  public _task: any;
 
   constructor() { }
 
