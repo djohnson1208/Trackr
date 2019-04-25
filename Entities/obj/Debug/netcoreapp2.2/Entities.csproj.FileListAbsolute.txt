@@ -8,3 +8,4 @@ C:\Users\Dallas\Development\VirtualAdvantageTaskApp\Entities\bin\Debug\netcoreap
 C:\Users\Dallas\Development\VirtualAdvantageTaskApp\Entities\bin\Debug\netcoreapp2.2\Entities.pdb
 C:\Users\Dallas\Development\VirtualAdvantageTaskApp\Entities\obj\Debug\netcoreapp2.2\Entities.dll
 C:\Users\Dallas\Development\VirtualAdvantageTaskApp\Entities\obj\Debug\netcoreapp2.2\Entities.pdb
+C:\Users\Dallas\Development\VirtualAdvantageTaskApp\Entities\obj\Debug\netcoreapp2.2\Entities.csprojAssemblyReference.cache
